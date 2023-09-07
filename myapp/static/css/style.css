@@ -1,0 +1,116 @@
+body {
+      font-family: Arial, sans-serif; 
+      margin: 0;  padding: 0;
+    }
+    header {  
+        background-color: #333;  
+        padding: 20px;  
+        color: #fff;  
+        display: flex;  
+        align-items: center;  
+        justify-content: space-between;
+    }
+    .logo img { 
+        height: 40px;  
+        vertical-align: middle;
+    }
+    nav ul {  
+        list-style-type: none;  
+        display: flex;  
+        gap: 20px;
+    }
+    nav ul li a {  
+        color: #fff;  
+        text-decoration: none;
+    }
+    .banner {  
+        background-color: #f5f5f5;  
+        padding: 40px;  
+        text-align: center;}
+        .banner h2 {  
+            color: #333;  
+            margin-top: 0;
+        }
+    .buttons {  
+        display: inline-block;  
+        background-color: #333;  
+        color: #fff;  
+        text-decoration: none;  
+        padding: 10px 20px;  
+        margin-top: 20px;  
+        border-radius: 3px;
+    }
+    .classes {  
+        padding: 40px;
+    }
+    .classes h3 {  
+        margin: 0;  
+        color: #333;
+    }
+    .classes ul {  
+        list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    flex-direction: row-reverse;
+    justify-content: center;
+    }
+    .classes ul li {  
+        text-align: center;
+    }
+    .classes ul li img {  
+        height: 100px;
+    }
+    .classes ul li h4 {  
+        margin-top: 10px;  
+        margin-bottom: 5px;  
+        color: #555;
+    }
+    .classes ul li a {  
+        color: #333;  
+        text-decoration: none;
+    }
+    footer {  
+        background-color: #333;  
+        color: #fff;  
+        padding: 20px;  
+        text-align: center;
+    }
+    .sub-part {
+        display: none; /* Hide sub-parts by default */
+      }
+  
+      .active {
+        display: block; /* Show sub-parts when active */
+      }
+      .submenu:hover .dropdown-menu {
+        display: block;
+      }
+      
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: #333;
+        padding: 10px;
+      }
+      
+      .dropdown-menu li {
+        margin: 10px;
+    }
+    
+    .dropdown-menu li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .login-butn{border-radius:25px;border:2px solid #fd9005;color:#fd9005;padding:10px 20px;font-size:20px;cursor:pointer;margin:5px;transition:all 0.5s ease;background:none}
+    .login-butn:not(:disabled):hover{color:white;background:#fd9005}
+    .login-butn:not([disabled]):hover{color:white;background:#fd9005}
+    .login-butn:not([disabled]):active{color:#fd9005;background:white}
+    .login-butn:not([disabled]):focus{outline:none;box-shadow:0 0 4px #fd9005} 
+    .index-ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+   

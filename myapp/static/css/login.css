@@ -1,0 +1,24 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.login-form {
+    margin: auto;
+    margin-top: 30px ;
+    width: 500px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+.login-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+.login-input[type="submit"] {
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+

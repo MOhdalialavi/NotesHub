@@ -1,0 +1,21 @@
+{% load static %}
+{% include "header.html" %} 
+<main>
+    <section id="content">
+        <h1>{{ category.name }}</h1>
+        <h2>{{ class.name }}</h2>
+        
+        <!-- Display Subjects -->
+        <section id="subjects">
+            <h2>Subjects</h2>
+            <ul>
+                {% for subject_item in subjects %}
+                    <li><a href="{% url 'class' category_name=category.name class_name=class_obj.name subject_name=subject_item.name %}">{{ subject_item.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+        fdkdjf
+        dfdfj
+    </section>
+</main>
+{% include "footer.html" %}

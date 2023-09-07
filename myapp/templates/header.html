@@ -1,0 +1,37 @@
+{% load static %}
+{%block content%}
+<link rel="stylesheet"  href="{% static 'css/style.css' %}"> 
+<script src="{%static 'js/script.js'%}"></script>
+<header>     
+    <div class="logo">      
+         <div class="logo">
+
+
+</div>     
+         <h1>StudyNotehub</h1>
+   </div>  
+   <div>     
+   <form id="searchForm">        
+       <input type="text" placeholder="Enter class or subject">        
+       <button class="buttons" type="submit">Search</button>      
+   </form>   
+   </div>
+   <li class="submenu">
+       <a href="#">Syllabus ▼</a>
+       <ul class="dropdown-menu">
+         <li><a href="#">Class A</a></li>
+         <li><a href="#">Class B</a></li>
+         <li><a href="#">Class C</a></li>
+       </ul>
+     </li>  
+     <a href="/">Home</a>
+     <a href="/notes">Notes</a>
+     <a href="/about">About</a>     
+     </ul>
+     <a href="{% url 'login' %}"> <button class="login-butn" type="button">login</button> </a>
+
+
+  
+   </nav>  
+</header> 
+{%endblock%}

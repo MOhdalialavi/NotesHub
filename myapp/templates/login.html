@@ -1,0 +1,35 @@
+{%load static %}
+<link rel="stylesheet"  href="{% static 'css/login.css' %}"> 
+<script src="{%static 'js/script.js'%}"></script>
+{% include "header.html" %}
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<div class="login-body">
+    
+    
+    <form class="login-form" action="{% url 'login' %}" method="post"> 
+            <h1>Admin login</h1>
+            
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            <input class="login-input" type="text" name="username" placeholder="Username">
+           
+            <input class="login-input" type="password" name="password" placeholder="Password">
+            
+            <input class="login-input" type="submit" value="Login">
+        </form>
+        {% if error %}
+        <p>{{ error }}</p>
+        {% endif %}
+    </div>
+</div>
+
+
+

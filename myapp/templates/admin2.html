@@ -1,0 +1,71 @@
+
+
+{% block content %}
+    <div class="admin-container">
+        <h1>Welcome to the Admin Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'admin:index' %}">Home</a></li>
+                <li><a href="{% url 'admin:myapp_category_changelist' %}">Categories</a></li>
+                <li><a href="{% url 'admin:myapp_subject_changelist' %}">Subjects</a></li> -->
+                <!-- Add more links for your models -->
+            </ul>
+        </nav>
+        <div class="content">
+            {% block admin_content %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+<!-- {% block admin_content %} -->
+    {% for category in categories %}
+        <h2>{{ category.name }}</h2>
+        
+        <!-- Subjects with Notes -->
+        <h3>Subjects with Notes</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject Name</th>
+                    <th>Note Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subject in category.subject_set.all %}
+                    <tr>
+                        <td>{{ subject.name }}</td>
+                        <td>
+                            {% for note in subject.note_set.all %}
+                                {{ note.title }}<br>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <!-- Subjects with Syllabi -->
+        <h3>Subjects with Syllabi</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject Name</th>
+                    <th>Syllabus Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subject in category.subject_set.all %}
+                    <tr>
+                        <td>{{ subject.name }}</td>
+                        <td>
+                            {% for syllabus in subject.syllabus_set.all %}
+                                {{ syllabus.title }}<br>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+{% endblock %}

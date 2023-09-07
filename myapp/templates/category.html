@@ -1,0 +1,24 @@
+{%load static %}
+<link rel="stylesheet"  href="{% static 'css/style.css' %}"> 
+
+{% include "header.html" %}
+<main>
+    <section id="content">
+        <h1>{{ category.name }}</h1>
+        
+        <!-- Display Classes -->
+        <section id="classes">
+            <h2>Classes</h2>
+            <ul>
+                {% for class_obj in classes %}
+                <li>
+                 <a href="{% url 'class' category_name=category.name class_name=class_obj.name %}">
+                    <h3>{{ class_obj.name }}</h3>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>            
+        </section>
+    </section>
+</main>
+{% include "footer.html" %}

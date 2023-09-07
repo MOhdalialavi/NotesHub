@@ -1,0 +1,48 @@
+{% load static %}
+<link rel="stylesheet"  href="{% static 'css/board.css' %}"> 
+
+{% block content %}
+{% include "header.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes and Syllabus Publication Website</title>
+  <link rel="stylesheet" href="{% static }.css">
+</head>
+<body>
+    <main>
+        <section id="content">
+            <h1>{{ category.name }}</h1>
+            <h2>{{ class.name }}</h2>
+            <h3>{{ subject.name }}</h3>
+            
+            <!-- Display Notes -->
+            <section id="notes">
+                <h2>Notes</h2>
+                <ul>
+                    {% for note in notes %}
+                        <li><a href="{{ note.url }}">{{ note.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </section>
+            
+            <!-- Display Syllabi -->
+            <section id="syllabus">
+                <h2>Syllabus</h2>
+                <ul>
+                    {% for syllabus in syllabi %}
+                        <li><a href="{{ syllabus.url }}">{{ syllabus.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </section>
+    </main>
+</body>
+</html>
+
+    {% include "footer.html" %}
+</footer>
+
+{% endblock %}

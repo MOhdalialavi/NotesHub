@@ -1,0 +1,52 @@
+{% load static %}
+
+
+<link rel="stylesheet"  href="{% static 'css/style.css' %}"> 
+
+{%block content%}
+<!DOCTYPE html><html> 
+    <head>   
+        <meta charset="UTF-8">   
+        <title>StudyNotehub</title>  
+        <script src="{%static 'js/script.js'%}"></script>
+        
+    </head> 
+    <body>    
+     {% include "header.html" %}
+  
+    <section class="banner">  
+        <h2>Welcome to Our Website!</h2>   
+        <p>Find comprehensive notes and syllabus in PDF form for different classes.</p>
+        <a href="#" class="cta-button">Get Started</a>   
+    </section>  
+    <section class="index-ul">
+        <ul class="index-ul" style=" display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;">
+            {% for category in categories %}
+            
+            
+                <li>
+
+                    
+                    <a href="{% url 'category' category_name=category.name %}">
+                        <img src="{% static 'images/'|add:category.name|add:'.png' %}" alt="{{ category.name }}">
+                        <h4>{{ category.name }}</h4>
+                    </a>
+                </li>
+                
+            
+            {% endfor %}   
+        </ul>
+         
+          
+    </section>  
+    <section id="latest-additions">
+        <h3> Newly added file will show here</h3>
+    </section>
+    <section id="user-reviews">
+        <h2> you can drop your review here </h2> 
+    </section>
+</body>
+{% include "footer.html" %}  
+        {%endblock%}
