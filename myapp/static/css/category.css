@@ -1,0 +1,82 @@
+/* styles.css */
+
+.box {
+    margin-left: 5%;
+    max-width: 50%;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid black;
+    position: relative;
+    padding: 1.4em 1em;
+    margin-bottom: 0.5em;
+    display: block;
+    border-radius: 11px;
+    cursor: pointer;
+    color: #444444;
+    box-shadow: 0 0px 5px white, 0 0px 0px white;
+    background: #EEEEEE;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.image-section {
+    display: grid;
+    justify-items: center;
+}
+
+/* Add any additional styling here */
+
+.text-center {
+    text-align: center;
+}
+
+.font-family-monospace {
+    font-family: monospace;
+}
+
+.grid-container {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+}
+
+.class-description {
+    padding: 10px;
+    line-break: auto;
+}
+
+
+.breadcrumb-container {
+    padding: 20px; 
+}
+
+.breadcrumb-item a {
+    color: #007bff; 
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+.header-section {
+    background-color: #333;
+    padding: 8px;
+    color: #fff;
+}
+
+.logos img {
+    height: 65px;
+    width: auto;
+   
+    border-radius: 30px;
+
+}
+.logos img:active{
+    transform:translateY(50px) scale(2.5);;
+}
+.header-tags{
+    text-align: center;
+}
+.logos{
+    padding-left: 30%;
+    position: absolute;
+}

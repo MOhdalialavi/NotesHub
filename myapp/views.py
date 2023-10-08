@@ -1,27 +1,31 @@
 from django.shortcuts import redirect, render,get_object_or_404
-from .models import Category, Class, Subject, Note, Syllabus
+from django.http import Http404, HttpResponse
+from .models import Category, Class, Subject, Note, Syllabus,Update
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.template.defaultfilters import slugify
+
 
 def index(request):
     categories = Category.objects.all()
-    return render(request, 'index.html', {'categories': categories})
+    updates = Update.objects.all()[:5]
+    classes=Class.objects.all()
+    return render(request, 'index.html', {'categories': categories,'updates': updates,'classes': classes})
 
-def login(request):
-    print("login ka apge mai aagaya")
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        print("User is athenticatind")
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
+# def login(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         print("User is athenticatind")
+#         user = authenticate(request, username=username, password=password)
+#         if user is not None:
 
-            return redirect('/admin')
+#             return redirect('/admin')
 
-        else:
-            return render(request, 'login.html', {'error': 'Invalid credentials'})
-    else:
-        return render(request, 'login.html')
+#         else:
+#             return render(request, 'login.html', {'error': 'Invalid credentials'})
+#     else:
+#         return render(request, 'login.html')
 
 
     
@@ -53,4 +57,21 @@ def board(request, category_name, class_name, subject_name):
     notes = Note.objects.filter(subject=subject)
     syllabi = Syllabus.objects.filter(subject=subject)
     return render(request, 'board.html', {'category': category, 'class': class_obj, 'subject': subject, 'notes': notes, 'syllabi': syllabi})
-  
+def about(request):
+    return render(request,"about.html")
+def download_file(a,file_id):
+    note = get_object_or_404(Note, pk=file_id)
+    syllabus = get_object_or_404(Syllabus, pk=file_id)
+
+    if isinstance(note, Note):
+        response = HttpResponse(note.title, content_type='application/force-download')
+        response['Content-Disposition'] = f'attachment; filename="{note.title}"'
+    elif isinstance(syllabus, Syllabus):
+        response = HttpResponse(syllabus.title, content_type='application/force-download')
+        response['Content-Disposition'] = f'attachment; filename="{syllabus.title}"'
+    else:
+        raise Http404("File not found")
+
+    return response
+
+

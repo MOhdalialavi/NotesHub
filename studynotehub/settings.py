@@ -125,7 +125,7 @@ STATIC_ROOT=os.path.join(BASE_DIR , 'static')
 
 # settings.py
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'myapp/static/media')
 
 
 # Default primary key field type

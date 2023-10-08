@@ -1,48 +1,81 @@
 {% load static %}
-<link rel="stylesheet"  href="{% static 'css/board.css' %}"> 
 
-{% block content %}
-{% include "header.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notes and Syllabus Publication Website</title>
-  <link rel="stylesheet" href="{% static }.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes and Syllabus Publication Website</title>
+    <link rel="stylesheet" href="{% static 'css/board.css' %}">
+    <link rel="stylesheet" href="{% static 'css/class.css' %}">
+    <link rel="stylesheet"  href="{% static 'css/board.css' %}">
+
 </head>
 <body>
+    <section class="header-section">
+        <div class="container">
+            <div class="logos">
+                <img src="{% static 'images/logo.jpg' %}" alt="Logo">
+            </div>
+            <div class="breadcrumb-container header-tags">
+                <nav aria-label="breadcrumb">
+                    <div class="breadcrumb">
+                        <div class="breadcrumb-item">
+                            <a href="/">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                                    <!-- SVG Path for home icon -->
+                                </svg> Home
+                            </a>
+                            <a href="{% url 'category' category_name=category.name %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-symlink" viewBox="0 0 16 16">
+                                    <!-- SVG Path for folder icon -->
+                                </svg> {{ category.name }}
+                            </a>
+                    
+                            <a href="{% url 'class' category_name=category.name class_name=class.name %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-x" viewBox="0 0 16 16">
+                                    <!-- SVG Path for folder-x icon -->
+                                </svg> {{ class.name }}
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </section>
+
     <main>
         <section id="content">
             <h1>{{ category.name }}</h1>
             <h2>{{ class.name }}</h2>
             <h3>{{ subject.name }}</h3>
-            
-            <!-- Display Notes -->
+
             <section id="notes">
                 <h2>Notes</h2>
                 <ul>
                     {% for note in notes %}
-                        <li><a href="{{ note.url }}">{{ note.title }}</a></li>
+                    <li><a href="{% url 'download_file' note.id %}">{{ note.title }}</a></li>
+
+                    {% empty %}
+                        <li>No files uploaded yet.</li>
                     {% endfor %}
                 </ul>
             </section>
-            
+
             <!-- Display Syllabi -->
             <section id="syllabus">
                 <h2>Syllabus</h2>
                 <ul>
                     {% for syllabus in syllabi %}
-                        <li><a href="{{ syllabus.url }}">{{ syllabus.title }}</a></li>
+                    <li><a href="{% url 'download_file' syllabus.id %}">{{ syllabus.title }}</a></li>
+                    {% empty %}
+                        <li>No files uploaded yet.</li>
                     {% endfor %}
                 </ul>
             </section>
         </section>
     </main>
-</body>
-</html>
 
     {% include "footer.html" %}
-</footer>
-
-{% endblock %}
+</body>
+</html>

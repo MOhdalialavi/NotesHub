@@ -1,52 +1,158 @@
 {% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <title>StudyNotehub</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark ">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="{% static 'images/logo.jpg' %}" alt="StudyNotehub Logo" height="30">
+                    StudyNotehub
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="notesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Syllabus
+                                </a>
+                                    <div class="dropdown-menu" aria-labelledby="syllabusDropdown">
+                                        <div>
+                                             <h6 class="dropdown-header">CBSE</h6>
+                                                {% for class_obj in classes %}
+                                                    {% if class_obj.category == 'CBSE' and class_obj.name %}
+                                                     <a class="dropdown-item" href="{% url 'class' category_name='CBSE' class_name=class_obj.name %}">{{ class_obj.name }}</a>
+                                                     {% endif %}
+                                                {% endfor %}
+                                        </div>
+                                                
+                                        <div>
+                                            <h6 class="dropdown-header">JKBOSE</h6>
+                                                {% for class_obj in classes %}
+                                                   {% if class_obj.category == 'JKBOSE' and class_obj.name %}
+                                                        <a class="dropdown-item" href="{% url 'class' category_name='JKBOSE' class_name=class_obj.name %}">{{ class_obj.name }}</a>
+                                                    {% endif %}
+                                                {% endfor %}
+                                        </div>
+                                        <div>
+                                            <h6 class="dropdown-header">UOL</h6>
+                                                {% for class_obj in classes %}
+                                                   {% if class_obj.category == 'UOL' and class_obj.name %}
+                                                        <a class="dropdown-item" href="{% url 'class' category_name='UOL' class_name=class_obj.name %}">{{ class_obj.name }}</a>
+                                                    {% endif %}
+                                                {% endfor %}
+                                        </div>
 
-<link rel="stylesheet"  href="{% static 'css/style.css' %}"> 
+                                    
+                                    
+                                </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="notesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Notes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="notesDropdown">
+                                 
+                                <div>
+                                    <h6 class="dropdown-header">UOL</h6>
+                                    <a class="dropdown-item" href="#">Second Sem</a>
+                                    <a class="dropdown-item" href="#">First Sem</a>
+                                    <a class="dropdown-item" href="#">Third Sem</a>
+                                </div>
+                            </div>
+                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin/login">
+                                <button class="btn btn-outline-light login-butn" type="button">Login</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-{%block content%}
-<!DOCTYPE html><html> 
-    <head>   
-        <meta charset="UTF-8">   
-        <title>StudyNotehub</title>  
-        <script src="{%static 'js/script.js'%}"></script>
-        
-    </head> 
-    <body>    
-     {% include "header.html" %}
-  
-    <section class="banner">  
-        <h2>Welcome to Our Website!</h2>   
-        <p>Find comprehensive notes and syllabus in PDF form for different classes.</p>
-        <a href="#" class="cta-button">Get Started</a>   
-    </section>  
-    <section class="index-ul">
-        <ul class="index-ul" style=" display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;">
-            {% for category in categories %}
-            
-            
-                <li>
 
-                    
-                    <a href="{% url 'category' category_name=category.name %}">
-                        <img src="{% static 'images/'|add:category.name|add:'.png' %}" alt="{{ category.name }}">
-                        <h4>{{ category.name }}</h4>
-                    </a>
-                </li>
-                
-            
-            {% endfor %}   
-        </ul>
-         
-          
-    </section>  
-    <section id="latest-additions">
-        <h3> Newly added file will show here</h3>
+    <div class="alert-marquee" id="alert-container">
+        <!-- Your marquee content goes here -->
+    </div>
+
+    <section class="banner">
+        <div class="container">
+            <h2>Welcome to Our Website!</h2>
+            <p>Find comprehensive notes and syllabus in PDF form for different classes.</p>
+            <a href="#" class="cta-button">Get Started</a>
+        </div>
     </section>
-    <section id="user-reviews">
-        <h2> you can drop your review here </h2> 
+
+    <section class="category-section">
+        <div class="container">
+            <div class="category-grid">
+                {% for category in categories %}
+                    <div class="category-box">
+                        <a href="{% url 'category' category_name=category.name %}">
+                            <img src="{% static '/media/images/'|add:category.name|add:'.png' %}" alt="{{ category.name }}">
+                            <h4>{{ category.name }}</h4>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </section>
+
+    <section id="latest-additions" class="latest-addition">
+        <div class="container">
+            <h3>Newly added files will show here</h3>
+            <!-- Add your latest additions content here -->
+        </div>
+    </section>
+
+    <section id="user-reviews" class="image-section">
+        <div class="container">
+            <h2>Message Us</h2>
+            <textarea id="feedback" required></textarea>
+        </div>
+    </section>
+
+    <section class="updates-section">
+        <div class="container">
+            <h2>Updates</h2>
+            <ul>
+                {% for update in updates %}
+                    <li>
+                        <a href="{{update.link}}">
+                            <strong>{{ update.title }}</strong>
+                            <p>{{ update.content }}</p>
+                            <small>{{ update.date_published }}</small>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {% include "footer.html" %}
 </body>
-{% include "footer.html" %}  
-        {%endblock%}
+</html>

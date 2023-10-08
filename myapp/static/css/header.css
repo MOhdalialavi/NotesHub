@@ -1,0 +1,19 @@
+/* Your existing CSS code remains mostly the same, but I've added some styles for the new structure */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f2f2f2;
+}
+
+header {
+    margin-bottom: 20px; /* Adjust spacing as needed */
+}
+
+.login-butn {
+    margin-top: 5px;
+}
+.navbar{
+    width: 100%;
+}

@@ -23,3 +23,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   });
 });
+
+const marquee = document.getElementById('alert-text');
+const link = document.getElementById('alert-link');
+
+// Add a class to stop the marquee animation when hovered
+link.addEventListener('mouseover', () => {
+    marquee.classList.add('stop-marquee');
+});
+
+// Remove the class to resume the marquee animation when not hovered
+link.addEventListener('mouseout', () => {
+    marquee.classList.remove('stop-marquee');
+});
+
+//feedback form
+document.getElementById("feedback-form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get user input
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var feedback = document.getElementById("feedback").value;
+
+  // Construct email content
+  var subject = "New Feedback from " + name;
+  var body = "Name: " + name + "\nEmail: " + email + "\nFeedback: " + feedback;
+
+  // Open user's default email client
+  window.open("mailto:mohdalilavi786@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body));
+});
