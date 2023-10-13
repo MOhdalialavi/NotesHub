@@ -45,6 +45,7 @@ body {
 .breadcrumb-item {
   display: inline-block;
   margin-right: 5px;
+  margin-left: 30%;
 }
 
 /* Style the main content section */
